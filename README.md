@@ -12,8 +12,9 @@ Currently building hands-on skills in AWS and cloud security through self-study,
 **Completed:**
 ✅ OverTheWire Bandit (Levels 0–33)
 ✅ AWS Cloud Practitioner Essentials
-🔄 AWS Cloud Quest (In Progress)
-⏳ flaws.cloud, CloudGoat, HackTheBox (Upcoming)
+✅ AWS Cloud Quest
+🔄 flaws.cloud
+⏳ CloudGoat, HackTheBox (Upcoming)
 
 ### 📫 Connect with me
 - LinkedIn: https://www.linkedin.com/in/kelvin-saw-b1417a202/
