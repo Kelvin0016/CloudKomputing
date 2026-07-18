@@ -13,7 +13,9 @@ Currently building hands-on skills in AWS and cloud security through self-study,
 ✅ OverTheWire Bandit (Levels 0–33)
 ✅ AWS Cloud Practitioner Essentials
 ✅ AWS Cloud Quest
-🔄 flaws.cloud
+✅ flaws.cloud + flaws2.cloud
+✅ Docker + Terraform
+🔄 Github Actions
 ⏳ CloudGoat, HackTheBox (Upcoming)
 
 ### 📫 Connect with me
