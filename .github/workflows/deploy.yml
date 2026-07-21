@@ -1,0 +1,83 @@
+name: Deploy Flask App to EC2
+
+on:
+  push:
+    branches: [docker-cicd]
+    paths:
+      - "flask-app/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Get runner's public IP
+        id: ip
+        run: echo "ip=$(curl -s https://checkip.amazonaws.com)" >> "$GITHUB_OUTPUT"
+
+      - name: Allow this runner's IP for SSH
+        run: |
+          aws ec2 authorize-security-group-ingress \
+            --group-id ${{ secrets.EC2_SG_ID }} \
+            --protocol tcp --port 22 \
+            --cidr ${{ steps.ip.outputs.ip }}/32
+
+      - name: Get EC2 public IP
+        id: ec2ip
+        run: |
+          IP=$(aws ec2 describe-instances \
+            --instance-ids ${{ secrets.EC2_INSTANCE_ID }} \
+            --query "Reservations[0].Instances[0].PublicIpAddress" \
+            --output text)
+          echo "ip=$IP" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ steps.ec2ip.outputs.ip }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            mkdir -p ~/flask-app
+            cd ~/flask-app
+
+      - name: Copy app files to EC2
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ steps.ec2ip.outputs.ip }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "flask-app/*"
+          target: "~/flask-app"
+          strip_components: 1
+
+      - name: Rebuild and restart container
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ steps.ec2ip.outputs.ip }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/flask-app
+            docker build -t flask-app .
+            docker stop flask-app-running || true
+            docker rm flask-app-running || true
+            docker run -d -p 5000:5000 --name flask-app-running flask-app
+
+      - name: Revoke this runner's IP
+        if: always()
+        run: |
+          aws ec2 revoke-security-group-ingress \
+            --group-id ${{ secrets.EC2_SG_ID }} \
+            --protocol tcp --port 22 \
+            --cidr ${{ steps.ip.outputs.ip }}/32
