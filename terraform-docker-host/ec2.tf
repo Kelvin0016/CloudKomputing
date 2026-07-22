@@ -38,14 +38,34 @@ resource "aws_instance" "docker_host" {
   key_name               = aws_key_pair.docker_host_key.key_name
   vpc_security_group_ids = [aws_security_group.docker_host_sg.id]
 
+user_data = <<-EOF
+    #!/bin/bash
+    dnf update -y
+    dnf install -y docker
+    systemctl enable --now docker
+    usermod -aG docker ec2-user
+  EOF
+
   root_block_device {
     volume_size = 30
     volume_type = "gp3"
+    encrypted   = true
+  }
+
+  metadata_options {
+    http_tokens   = "required"
+    http_endpoint = "enabled"
   }
 
   tags = {
     Name = "docker-study-host"
   }
+# Once created, don't replace the instance just because AWS published a
+  # newer AMI. Only change the AMI (and thus the instance) intentionally.
+  lifecycle {
+    ignore_changes = [ami]
+  }
+
 }
 
 output "instance_public_ip" {
