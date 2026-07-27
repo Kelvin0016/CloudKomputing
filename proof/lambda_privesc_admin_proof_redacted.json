@@ -1,0 +1,41 @@
+{
+    "Users": [
+        {
+            "Path": "/",
+            "UserName": "chris-cgid0pmyu7da89",
+            "UserId": "AIDAZHRPGFZW7EJBN62ZL",
+            "Arn": "arn:aws:iam::REDACTED:user/chris-cgid0pmyu7da89",
+            "CreateDate": "2026-07-27T05:24:18+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "cloudgoat-cli",
+            "UserId": "REDACTED",
+            "Arn": "arn:aws:iam::REDACTED:user/cloudgoat-cli",
+            "CreateDate": "2026-07-23T03:29:35+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "[REDACTED]",
+            "UserId": "REDACTED",
+            "Arn": "arn:aws:iam::REDACTED:user/[REDACTED]",
+            "CreateDate": "2026-07-07T02:17:06+00:00",
+            "PasswordLastUsed": "2026-07-07T02:17:38+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "[REDACTED]",
+            "UserId": "REDACTED",
+            "Arn": "arn:aws:iam::REDACTED:user/[REDACTED]",
+            "CreateDate": "2026-07-21T06:14:12+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "[REDACTED - admin user]",
+            "UserId": "REDACTED",
+            "Arn": "arn:aws:iam::REDACTED:user/[REDACTED]",
+            "CreateDate": "2026-07-06T03:24:29+00:00",
+            "PasswordLastUsed": "2026-07-27T05:20:59+00:00"
+        }
+    ]
+}
