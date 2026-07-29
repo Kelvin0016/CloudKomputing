@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelvin — Aspiring Cloud Security Engineer</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">kelvin<span class="accent-amber">@</span>cloud</span>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow">// identity check</p>
+      <h1>Kelvin<br><span class="accent-amber">Aspiring Cloud Security Engineer</span></h1>
+      <p class="hero-sub">Systems administrator turned cloud defender — building, breaking, and hardening AWS infrastructure to learn how it actually fails.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">view projects</a>
+        <a href="#contact" class="btn btn-ghost">get in touch</a>
+      </div>
+    </div>
+
+    <div class="console">
+      <div class="console-bar">
+        <span class="dot dot-red"></span><span class="dot dot-amber"></span><span class="dot dot-teal"></span>
+        <span class="console-title">status.sh</span>
+      </div>
+      <div class="console-body">
+        <p class="console-line"><span class="prompt">$</span> ./check-status --profile kelvin</p>
+        <p class="console-line out">Running system checks<span class="dots"></span></p>
+        <p class="console-line status"><span class="ok">[ OK ]</span> IT systems administration ..... <span class="dim">4+ yrs, AD / Intune / Entra ID</span></p>
+        <p class="console-line status"><span class="ok">[ OK ]</span> AWS + Terraform + Docker ..... <span class="dim">self-hosted CI/CD pipeline</span></p>
+        <p class="console-line status"><span class="ok">[ OK ]</span> Cloud attack &amp; defense ..... <span class="dim">3 CloudGoat scenarios cleared</span></p>
+        <p class="console-line status"><span class="ok">[ OK ]</span> IaC security scanning ..... <span class="dim">Trivy, 0 unresolved findings</span></p>
+        <p class="console-line out">4 checks passed, 0 failed</p>
+        <p class="console-line"><span class="prompt">$</span> <span class="cursor">▌</span></p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section" id="about">
+    <p class="section-eyebrow">01 / about</p>
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="assets/profile.jpeg" alt="Kelvin" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-fallback">photo</div>
+      </div>
+      <div class="about-text">
+        <p>I'm Kelvin, a Diploma in IT graduate (CGPA 3.96) turned cloud security engineer in training. I started in IT — racking servers, managing Active Directory, keeping a company's Windows and Linux estate patched and running. That work taught me infrastructure from the inside out, and it's what pulled me toward security: every system I kept alive was also a system someone could try to break.</p>
+        <p>I'm rebuilding that foundation in the cloud now. Everything on this site — the CI/CD pipeline, the hardened EC2 host, the attack writeups — is infrastructure I stood up, broke into, and fixed, all myself, using Terraform, Docker, and AWS.</p>
+        <p>Based in Melaka, Malaysia. Currently working toward AWS Cloud Practitioner certification, one hands-on attack scenario at a time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <p class="section-eyebrow">02 / skills</p>
+    <div class="modules">
+
+      <div class="module">
+        <div class="module-head">
+          <span class="module-name">cloud-security.service</span>
+          <span class="badge badge-teal">active</span>
+        </div>
+        <ul class="module-list">
+          <li>AWS — EC2, IAM, S3, Lambda, CloudTrail, CloudWatch, VPC</li>
+          <li>Terraform — infrastructure as code</li>
+          <li>Docker &amp; containerization</li>
+          <li>CI/CD — GitHub Actions</li>
+          <li>Security scanning — Trivy</li>
+          <li>Cloud attack/defense — CloudGoat, flaws.cloud</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-head">
+          <span class="module-name">it-systems-admin.service</span>
+          <span class="badge badge-amber">foundation</span>
+        </div>
+        <ul class="module-list">
+          <li>Active Directory, Intune, Entra ID</li>
+          <li>Windows &amp; Linux administration</li>
+          <li>Compliance audits</li>
+          <li>Backup management — Veeam</li>
+          <li>Server installation &amp; hardware deployment</li>
+          <li>Basic networking — IP / DNS</li>
+          <li>Software configuration &amp; troubleshooting</li>
+          <li>Asset tracking, cable management</li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="lang-line"><span class="dim">languages —</span> English, Mandarin, Cantonese, Taiwanese, Malay</p>
+  </section>
+
+  <section class="section" id="projects">
+    <p class="section-eyebrow">03 / projects</p>
+
+    <article class="log-entry">
+      <div class="log-head">
+        <h3>Self-hosted Docker CI/CD pipeline</h3>
+        <span class="badge badge-teal">deployed</span>
+      </div>
+      <p class="log-meta">Terraform · Docker · GitHub Actions · AWS EC2</p>
+      <p>Terraform-provisioned EC2 host in AWS Malaysia (ap-southeast-5) with a self-bootstrapping Docker install, IMDSv2 enforced, encrypted root volume, and an auto-stop Lambda so nothing runs unattended. GitHub Actions deploys on every push, temporarily opening SSH for its own runner IP and revoking it immediately after — no standing exposure.</p>
+      <a href="https://github.com/Kelvin0016/CloudKomputing/tree/docker-cicd" class="log-link">view repo →</a>
+    </article>
+
+    <article class="log-entry">
+      <div class="log-head">
+        <h3>CloudGoat attack scenario writeups</h3>
+        <span class="badge badge-teal">3 cleared</span>
+      </div>
+      <p class="log-meta">AWS IAM · SSRF · Lambda · Privilege Escalation</p>
+      <p>Three deliberately vulnerable AWS environments, deployed and exploited end to end: an IAM instance-profile hijack, an SSRF-into-S3 data breach, and a Lambda role-passing privilege escalation. Each documented with root cause and prevention, then fully torn down.</p>
+      <a href="https://github.com/Kelvin0016/CloudKomputing/tree/cloudgoat-scenarios" class="log-link">read writeups →</a>
+    </article>
+
+    <article class="log-entry">
+      <div class="log-head">
+        <h3>flaws.cloud &amp; flaws2.cloud</h3>
+        <span class="badge badge-teal">completed</span>
+      </div>
+      <p class="log-meta">S3 misconfiguration · Attacker &amp; Defender paths</p>
+      <p>Guided AWS security wargame series — six levels of progressively harder S3 and IAM misconfigurations, followed by a two-sided attacker/defender scenario covering detection as well as exploitation.</p>
+    </article>
+
+  </section>
+
+  <section class="section" id="contact">
+    <p class="section-eyebrow">04 / contact</p>
+    <div class="console contact-console">
+      <div class="console-bar">
+        <span class="dot dot-red"></span><span class="dot dot-amber"></span><span class="dot dot-teal"></span>
+        <span class="console-title">contact.sh</span>
+      </div>
+      <div class="console-body">
+        <p class="console-line"><span class="prompt">$</span> cat contact.txt</p>
+        <p class="console-line out">email &nbsp;&nbsp;&nbsp;<a href="mailto:kelvins.ksyh@gmail.com">kelvins.ksyh@gmail.com</a></p>
+        <p class="console-line out">linkedin &nbsp;<a href="https://www.linkedin.com/in/kelvin-saw-ksyh001016/" target="_blank" rel="noopener">linkedin.com/in/kelvin-saw-ksyh001016</a></p>
+        <p class="console-line out">github &nbsp;&nbsp;&nbsp;<a href="https://github.com/Kelvin0016" target="_blank" rel="noopener">github.com/Kelvin0016</a></p>
+        <p class="console-line"><span class="prompt">$</span> <span class="cursor">▌</span></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>built with Docker, Terraform, and a study plan &mdash; deployed via GitHub Actions</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
