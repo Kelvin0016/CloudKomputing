@@ -1,0 +1,22 @@
+# Local variable values (contains real bucket name / email) - never commit
+terraform.tfvars
+*.auto.tfvars
+
+# Terraform state - contains resource IDs/ARNs, keep local only unless using remote backend
+*.tfstate
+*.tfstate.*
+
+# Local .terraform directories
+**/.terraform/*
+
+# Crash log files
+crash.log
+crash.*.log
+
+# CLI config files
+.terraformrc
+terraform.rc
+
+# OS junk
+.DS_Store
+Thumbs.db
