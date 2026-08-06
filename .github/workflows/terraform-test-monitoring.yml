@@ -1,0 +1,36 @@
+name: Terraform Test - Monitoring
+
+on:
+  push:
+    branches: [monitoring-tf]
+  pull_request:
+    branches: [monitoring-tf]
+
+jobs:
+  terraform-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.TF_TEST_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.TF_TEST_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "~1.9"
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Test
+        run: |
+          terraform test \
+            -var="cloudtrail_bucket_name=${{ secrets.CLOUDTRAIL_BUCKET_NAME }}" \
+            -var="billing_alert_email=${{ secrets.BILLING_ALERT_EMAIL }}"
