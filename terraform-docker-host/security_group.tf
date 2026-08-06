@@ -26,7 +26,13 @@ ingress {
     protocol    = "tcp"
     cidr_blocks = [local.my_ip_cidr]
   }
-
+ingress {
+    description = "Profile site - public, intentionally open to everyone"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
   egress {
     description = "Allow all outbound"
     from_port   = 0
