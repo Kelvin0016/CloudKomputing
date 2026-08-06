@@ -8,7 +8,3 @@ terraform {
   }
 }
 
-provider "aws" {
-  region  = "ap-southeast-5"
-  profile = "kelvin"
-}
