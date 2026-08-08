@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello from my Dockerized Flask app, Kelvin! Redeploy for Kubernetes."
+    return "Hello from my Dockerized Flask app, Kelvin! Redeploy for Kubernetes. Take 2."
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
