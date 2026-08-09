@@ -45,9 +45,11 @@
         <p class="console-line out">Running system checks<span class="dots"></span></p>
         <p class="console-line status"><span class="ok">[ OK ]</span> IT systems administration ..... <span class="dim">2+ yrs, AD / Intune / Entra ID</span></p>
         <p class="console-line status"><span class="ok">[ OK ]</span> AWS + Terraform + Docker ..... <span class="dim">self-hosted CI/CD pipeline</span></p>
+        <p class="console-line status"><span class="ok">[ OK ]</span> Infrastructure testing ..... <span class="dim">terraform test, CI-gated</span></p>
+        <p class="console-line status"><span class="ok">[ OK ]</span> Kubernetes ..... <span class="dim">kind cluster, self-healing verified</span></p>
         <p class="console-line status"><span class="ok">[ OK ]</span> Cloud attack &amp; defense ..... <span class="dim">3 CloudGoat scenarios cleared</span></p>
         <p class="console-line status"><span class="ok">[ OK ]</span> IaC security scanning ..... <span class="dim">Trivy, 0 unresolved findings</span></p>
-        <p class="console-line out">4 checks passed, 0 failed</p>
+        <p class="console-line out">6 checks passed, 0 failed</p>
         <p class="console-line"><span class="prompt">$</span> <span class="cursor">▌</span></p>
       </div>
     </div>
@@ -76,19 +78,21 @@
     <div class="modules">
 
       <div class="module">
-        <div class="module-head">
-          <span class="module-name">cloud-security.service</span>
-          <span class="badge badge-teal">active</span>
-        </div>
-        <ul class="module-list">
-          <li>AWS — EC2, IAM, S3, Lambda, CloudTrail, CloudWatch, VPC</li>
-          <li>Terraform — infrastructure as code</li>
-          <li>Docker &amp; containerization</li>
-          <li>CI/CD — GitHub Actions</li>
-          <li>Security scanning — Trivy</li>
-          <li>Cloud attack/defense — CloudGoat, flaws.cloud</li>
-        </ul>
-      </div>
+  <div class="module-head">
+    <span class="module-name">cloud-security.service</span>
+    <span class="badge badge-teal">active</span>
+  </div>
+  <ul class="module-list">
+    	<li>AWS — EC2, IAM, S3, Lambda, CloudTrail, CloudWatch, SNS, VPC/networking</li>
+    	<li>Terraform — writing, importing, and testing production infrastructure</li>
+    	<li>Infrastructure testing — terraform test (native HCL assertions)</li>
+    	<li>Docker &amp; containerization</li>
+    	<li>Kubernetes — Deployments, Services, self-healing, local clusters via kind</li>
+    	<li>CI/CD — GitHub Actions (Docker builds, automated test gating)</li>
+    	<li>Security scanning — Trivy</li>
+    	<li>Cloud attack/defense — CloudGoat, flaws.cloud</li>
+  	</ul>
+</div>
 
       <div class="module">
         <div class="module-head">
@@ -123,6 +127,16 @@
       <p>Terraform-provisioned EC2 host in AWS Malaysia (ap-southeast-5) with a self-bootstrapping Docker install, IMDSv2 enforced, encrypted root volume, and an auto-stop Lambda so nothing runs unattended. GitHub Actions deploys on every push, temporarily opening SSH for its own runner IP and revoking it immediately after — no standing exposure.</p>
       <a href="https://github.com/Kelvin0016/CloudKomputing/tree/docker-cicd" class="log-link">view repo →</a>
     </article>
+
+<article class="log-entry">
+  <div class="log-head">
+    <h3>Local Kubernetes cluster — Flask app</h3>
+    <span class="badge badge-teal">deployed</span>
+  </div>
+  <p class="log-meta">Kubernetes · kind · Deployments · Services</p>
+  <p>Deployed the existing Dockerized Flask app to a self-hosted local Kubernetes cluster (kind), running on the same Terraform-provisioned EC2 host. Configured a 2-replica Deployment behind a NodePort Service, and verified self-healing live — deleting a pod triggers automatic replacement within seconds, no manual intervention.</p>
+  <a href="https://github.com/Kelvin0016/CloudKomputing/blob/main/Kubernetes%20Fundamentals.md" class="log-link">read writeup →</a>
+</article>
 
     <article class="log-entry">
       <div class="log-head">
