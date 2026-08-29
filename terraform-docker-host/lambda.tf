@@ -86,6 +86,9 @@ resource "aws_iam_role_policy" "scheduler_invoke_lambda" {
 resource "aws_scheduler_schedule" "runtime_check" {
   name       = "ec2-runtime-check"
   group_name = "default"
+  # Disabled: this instance now hosts a live public profile site and should
+  # stay running. Set back to "ENABLED" to resume auto-stop.
+  state = "DISABLED"
 
   flexible_time_window {
     mode = "OFF"
