@@ -15,8 +15,10 @@ Currently building hands-on skills in AWS and cloud security through self-study,
 ✅ AWS Cloud Quest
 ✅ flaws.cloud + flaws2.cloud
 ✅ Docker + Terraform
-🔄 Github Actions
-⏳ CloudGoat, HackTheBox (Upcoming)
+✅ Github Actions
+✅ CloudGoat
+🔄
+⏳HackTheBox (Upcoming)
 
 ### 📫 Connect with me
 - LinkedIn: https://www.linkedin.com/in/kelvin-saw-b1417a202/
